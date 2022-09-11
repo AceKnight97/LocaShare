@@ -1,12 +1,17 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import * as SecureStore from "expo-secure-store";
+// import React from "react";
+// import Navigators from "./src/navigation";
+
+// function App() {
+//   return <Navigators></Navigators>;
+// }
+
+// export default App;
 import * as React from "react";
-import AuthContext from "./src/auth";
-import BottomAppStack from "./src/navigation/bottomAppStack";
+import * as SecureStore from "expo-secure-store";
 import Login from "./src/navigation/loginStack";
-import User from "./src/pages/user";
+import AuthContext from "./src/auth";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +56,11 @@ export default function App({ navigation }) {
       } catch (e) {
         // Restoring token failed
       }
+
+      // After restoring token, we may need to validate it in production apps
+
+      // This will switch to the App screen or Auth screen and this loading
+      // screen will be unmounted and thrown away.
       dispatch({ type: "RESTORE_TOKEN", token: userToken });
     };
 
@@ -60,10 +70,20 @@ export default function App({ navigation }) {
   const authContext = React.useMemo(
     () => ({
       signIn: async (data) => {
+        // In a production app, we need to send some data (usually username, password) to server and get a token
+        // We will also need to handle errors if sign in failed
+        // After getting token, we need to persist the token using `SecureStore`
+        // In the example, we'll use a dummy token
+
         dispatch({ type: "SIGN_IN", token: "dummy-auth-token" });
       },
       signOut: () => dispatch({ type: "SIGN_OUT" }),
       signUp: async (data) => {
+        // In a production app, we need to send user data to server and get a token
+        // We will also need to handle errors if sign up failed
+        // After getting token, we need to persist the token using `SecureStore`
+        // In the example, we'll use a dummy token
+
         dispatch({ type: "SIGN_IN", token: "dummy-auth-token" });
       },
     }),
@@ -73,16 +93,11 @@ export default function App({ navigation }) {
   return (
     <NavigationContainer>
       <AuthContext.Provider value={authContext}>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-            statusBarStyle: "dark",
-          }}
-        >
-          {state.userToken !== null ? (
-            <Stack.Screen name="login" component={Login} />
+        <Stack.Navigator>
+          {state.userToken == null ? (
+            <Stack.Screen name="Login" component={Login} />
           ) : (
-            <Stack.Screen name="bottomApp" component={BottomAppStack} />
+            <Stack.Screen name="Login" component={Login} />
           )}
         </Stack.Navigator>
       </AuthContext.Provider>
