@@ -1,16 +1,14 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as SecureStore from "expo-secure-store";
 import * as React from "react";
 import AuthContext from "./src/auth";
 import BottomAppStack from "./src/navigation/bottomAppStack";
-import Login from "./src/navigation/loginStack";
-import User from "./src/pages/user";
+import Login from "./src/navigation/login";
 
 const Stack = createNativeStackNavigator();
 
-export default function App({ navigation }) {
+function App({ navigation }) {
   const [state, dispatch] = React.useReducer(
     (prevState, action) => {
       switch (action.type) {
@@ -60,6 +58,7 @@ export default function App({ navigation }) {
   const authContext = React.useMemo(
     () => ({
       signIn: async (data) => {
+        console.log({ data });
         dispatch({ type: "SIGN_IN", token: "dummy-auth-token" });
       },
       signOut: () => dispatch({ type: "SIGN_OUT" }),
@@ -79,7 +78,7 @@ export default function App({ navigation }) {
             statusBarStyle: "dark",
           }}
         >
-          {state.userToken !== null ? (
+          {state.userToken == null ? (
             <Stack.Screen name="login" component={Login} />
           ) : (
             <Stack.Screen name="bottomApp" component={BottomAppStack} />
@@ -89,3 +88,4 @@ export default function App({ navigation }) {
     </NavigationContainer>
   );
 }
+export default App;
