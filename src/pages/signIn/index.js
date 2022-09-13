@@ -1,3 +1,4 @@
+import * as Facebook from 'expo-facebook';
 import * as Google from "expo-google-app-auth";
 import PropTypes from "prop-types";
 import React, { useContext, useEffect, useState } from "react";
@@ -10,6 +11,32 @@ const YOUR_CLIENT_ID_HERE =
 const SignIn = (props) => {
   const { signIn } = useContext(AuthContext);
   const [state, setState] = useState();
+
+  const logInFb = async () => {
+    console.log('FFFFF')
+    try {
+      // await Facebook.initializeAsync('1137015330530959', 'Ace');
+      // (appId, appName)
+      await Facebook.initializeAsync({
+        appId: '1137015330530959',
+      });
+      const { type, token, expirationDate, permissions, declinedPermissions } =
+        await Facebook.logInWithReadPermissionsAsync({
+          permissions: ['public_profile'],
+        });
+      if (type === 'success') {
+        // Get the user's name using Facebook's Graph API
+        const response = await fetch(
+          `https://graph.facebook.com/me?access_token=${token}`
+        );
+        Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
+      } else {
+        // type === 'cancel'
+      }
+    } catch ({ message }) {
+      alert(`Facebook Login Error: ${message}`);
+    }
+  };
 
   const signInWithGoogleAsync = async () => {
     try {
@@ -37,7 +64,7 @@ const SignIn = (props) => {
   return (
     <View style={{}}>
       <Text>Sign In</Text>
-      <Button onPress={() => signInWithGoogleAsync()} title="Sign In"></Button>
+      <Button onPress={() => logInFb()} title="Sign In"></Button>
     </View>
   );
 };
