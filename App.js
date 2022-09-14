@@ -4,9 +4,24 @@ import * as SecureStore from "expo-secure-store";
 import * as React from "react";
 import AuthContext from "./src/auth";
 import BottomAppStack from "./src/navigation/bottomAppStack";
-import Login from "./src/navigation/login";
+import SignIn from "./src/pages/signIn";
+import SignUp from "./src/pages/signUp";
 
 const Stack = createNativeStackNavigator();
+
+const LoginStack = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="signIn" component={SignIn} />
+      <Stack.Screen name="signUp" component={SignUp} />
+    </Stack.Navigator>
+  );
+}
+
 
 function App({ navigation }) {
   const [state, dispatch] = React.useReducer(
@@ -79,7 +94,7 @@ function App({ navigation }) {
           }}
         >
           {state.userToken == null ? (
-            <Stack.Screen name="login" component={Login} />
+            <Stack.Screen name="login" component={LoginStack} />
           ) : (
             <Stack.Screen name="bottomApp" component={BottomAppStack} />
           )}

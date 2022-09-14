@@ -61,10 +61,15 @@ const SignIn = (props) => {
     // signInWithGoogleAsync();
   }, []);
 
+  const goToSignUp = () => {
+    props.navigation.navigate('signUp')
+  }
+
   return (
     <View style={{}}>
       <Text>Sign In</Text>
-      <Button onPress={() => logInFb()} title="Sign In"></Button>
+      <Button onPress={() => { }} title="Sign In"></Button>
+      <Button onPress={goToSignUp} title="Sign Up"></Button>
     </View>
   );
 };
