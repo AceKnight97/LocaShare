@@ -9,7 +9,8 @@ import SignUp from "./src/pages/signUp";
 
 const Stack = createNativeStackNavigator();
 
-const LoginStack = () => {
+const LoginStack = (props) => {
+  console.log({LoginStack: props})
   return (
     <Stack.Navigator
       screenOptions={{
