@@ -3,7 +3,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {View} from 'react-native';
-import {TODAY} from '../../../Constant';
+import {TODAY} from '../../../constants';
 import {useMergeState} from '../../../Helper/customHooks';
 import InputTitle from '../InputTitle';
 import DatepickerCTStyle from './_datepickerCT';

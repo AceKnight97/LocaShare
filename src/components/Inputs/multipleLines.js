@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, Text, View, TextInput} from 'react-native';
 
-import globalStyles from '../../Styles';
-import {colors} from '../../constant/color';
-import {screenW} from '../../Constant';
+import globalStyles from '../../styles';
+import {colors} from '../../constants/color';
+import {screenW} from '../../constants';
 
 const {gray1} = colors;
 const styles = StyleSheet.create({

@@ -1,43 +1,55 @@
-import PropTypes from "prop-types";
-import React, { useContext, useEffect, useState } from "react";
-import { Button, Text, View, TextInput } from "react-native";
-import AuthContext from "../../auth";
-import LoginFrame from "../../components/ui/loginFrame/index"
+import PropTypes from 'prop-types';
+import React, { useContext, useEffect, useState, useRef } from 'react';
+import { Button, Text, View, TextInput } from 'react-native';
+import AuthContext from '../../auth';
+import LoginFrame from '../../components/ui/loginFrame/index';
+import InputCT from '../../components/Inputs/InputCT/index';
+import emailIc from '../../images/Login/email.svg';
+import emailActIc from '../../images/Login/emailAct.svg';
+import { useMergeState } from '../../ultis/index';
 
 const SignIn = (props) => {
   const { signIn } = useContext(AuthContext);
-  const [state, setState] = useState();
+  const nextInput1 = useRef(undefined);
+  const [state, setState] = useMergeState({
+    email: '',
+    password: '',
+    emailErr: '',
+    passwordErr: '',
 
-  useEffect(() => {
-  }, []);
+    loading: false,
+  });
+
+  useEffect(() => {}, []);
 
   const goToSignUp = () => {
-    props.navigation.navigate('signUp')
-  }
+    props.navigation.navigate('signUp');
+  };
+
+  const onChange = () => {};
+
+  const { email } = state;
 
   return (
     <LoginFrame>
       <Text>Sign In</Text>
-      <Button onPress={() => { }} title="Sign In"></Button>
+      <Button onPress={() => {}} title="Sign In"></Button>
       <Button onPress={goToSignUp} title="Sign Up"></Button>
 
-      
-      {/*
-      
-      <TextInput
-        style={{
-          marginTop: 24,
-          borderRadius: 4,
-          borderColor: "#CDCED1",
-          borderWidth: 1,
-          height: 36,
-          paddingHorizontal: 10,
-          
-          // backgroundColor: '#123456',
-        }}
+      <InputCT
+        title="Email"
+        name="email"
+        value={'email'}
+        onChange={onChange}
+        placeholder="Email"
+        icon={email ? emailActIc : emailIc}
+        // onSubmitEditing={() => {
+        //   nextInput1.current.focus();
+        // }}
+        returnKeyType="next"
+        keyboardType="email-address"
+        errMes={emailErr}
       />
-      
-      */}
     </LoginFrame>
   );
 };

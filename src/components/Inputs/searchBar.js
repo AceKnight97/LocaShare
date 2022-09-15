@@ -9,13 +9,13 @@ import {
 } from 'react-native';
 import {SvgXml} from 'react-native-svg';
 
-import globalStyles from '../../Styles';
-import {colors} from '../../constant/color';
-import {screenW} from '../../Constant';
+import globalStyles from '../../styles';
+import {colors} from '../../constants/color';
+import {screenW} from '../../constants';
 
 import ButtonCT from '../Buttons/ButtonCT';
 
-import closeIc from '../../../src/Images/Basic/close.svg';
+import closeIc from '../../../src/images/basic/close.svg';
 
 const {green00, green, field, gray1, black1} = colors;
 

@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '../../../constant/color';
+import {colors} from '../../../constants/color';
 
 const {green1, gray1, red0} = colors;
 

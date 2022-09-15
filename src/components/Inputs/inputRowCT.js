@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 
-import globalStyles from '../../Styles';
-import { colorsLinear, colors } from '../../constant/color';
+import globalStyles from '../../styles';
+import { colorsLinear, colors } from '../../constants/color';
 
 const styles = StyleSheet.create({
   inputCTMain: {
