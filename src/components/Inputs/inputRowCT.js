@@ -1,16 +1,11 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import {
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  View,
-  TextInput,
+  Image, StyleSheet, Text, TextInput, TouchableOpacity, View
 } from 'react-native';
-import { SvgXml } from 'react-native-svg';
 
+import { colors } from '../../constants/color';
 import globalStyles from '../../styles';
-import { colorsLinear, colors } from '../../constants/color';
 
 const styles = StyleSheet.create({
   inputCTMain: {
@@ -92,7 +87,7 @@ class InputRowCT extends Component {
             inputWrapper,
             value ? { borderBottomColor: colors.green1 } : {},
           ]}>
-          {icon ? <SvgXml xml={icon} style={{ marginRight: 8 }} /> : null}
+          {icon ? <Image xml={icon} style={{ marginRight: 8 }} /> : null}
 
           <TextInput
             // editable={!disabled}

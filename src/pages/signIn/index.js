@@ -1,16 +1,12 @@
 import PropTypes from 'prop-types';
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import {
-  Button,
-  Text,
-  View,
-  TextInput,
   Image,
-  TouchableOpacity,
+  TouchableOpacity
 } from 'react-native';
 import AuthContext from '../../auth';
-import LoginFrame from '../../components/ui/loginFrame/index';
 import InputCT from '../../components/Inputs/InputCT/index';
+import LoginFrame from '../../components/ui/loginFrame/index';
 import { useMergeState } from '../../ultis/index';
 import signInStyle from './signInStyle';
 
@@ -37,11 +33,12 @@ const SignIn = (props) => {
     loading: false,
   });
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   const goToSignUp = () => {
     props.navigation.navigate('signUp');
   };
+  
   const onChange = (key, value) => {
     setState({ [key]: value, emailErr: '', passwordErr: '' });
   };

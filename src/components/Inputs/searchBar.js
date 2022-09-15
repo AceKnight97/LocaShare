@@ -1,23 +1,17 @@
-import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
+  Image, StyleSheet, TextInput,
+  TouchableOpacity, View
 } from 'react-native';
-import {SvgXml} from 'react-native-svg';
 
+import { colors } from '../../constants/color';
 import globalStyles from '../../styles';
-import {colors} from '../../constants/color';
-import {screenW} from '../../constants';
 
-import ButtonCT from '../Buttons/ButtonCT';
 
 import closeIc from '../../../src/images/basic/close.svg';
 
-const {green00, green, field, gray1, black1} = colors;
+const { green00, green, field, gray1, black1 } = colors;
 
 const styles = StyleSheet.create({
   mainView: {
@@ -51,8 +45,8 @@ const styles = StyleSheet.create({
     // backgroundColor: green00,
   },
 });
-const {flexRowAligCent} = globalStyles;
-const {mainView, inputSty, buttonSty} = styles;
+const { flexRowAligCent } = globalStyles;
+const { mainView, inputSty, buttonSty } = styles;
 class SearchBar extends Component {
   constructor(props) {
     super(props);
@@ -68,17 +62,17 @@ class SearchBar extends Component {
   }
 
   render() {
-    const {searchText} = this.state;
-    const {placeholder, onClosePress} = this.props;
+    const { searchText } = this.state;
+    const { placeholder, onClosePress } = this.props;
     return (
       <View style={mainView}>
         <TextInput
           style={[
             inputSty,
-            searchText ? {borderColor: green} : {borderColor: black1},
+            searchText ? { borderColor: green } : { borderColor: black1 },
           ]}
           onChangeText={(x) => {
-            this.setState({searchText: x});
+            this.setState({ searchText: x });
             this.searchUpdated(x);
           }}
           value={searchText}
@@ -86,11 +80,10 @@ class SearchBar extends Component {
         />
 
         <TouchableOpacity style={[buttonSty]} onPress={onClosePress}>
-          <SvgXml
+          <Image
             xml={closeIc}
             width="40"
             height="40"
-            // style={{borderWidth: 1}}
           />
         </TouchableOpacity>
       </View>
@@ -100,8 +93,8 @@ class SearchBar extends Component {
 
 SearchBar.defaultProps = {
   placeholder: '',
-  callAPI: () => {},
-  onClosePress: () => {},
+  callAPI: () => { },
+  onClosePress: () => { },
 };
 SearchBar.propTypes = {
   placeholder: PropTypes.string,
