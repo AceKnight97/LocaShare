@@ -4,8 +4,8 @@ import { Button, Text, View, TextInput } from 'react-native';
 import AuthContext from '../../auth';
 import LoginFrame from '../../components/ui/loginFrame/index';
 import InputCT from '../../components/Inputs/InputCT/index';
-import emailIc from '../../images/Login/email.svg';
-import emailActIc from '../../images/Login/emailAct.svg';
+import emailIc from '../../images/login/email.svg';
+import emailActIc from '../../images/login/emailAct.svg';
 import { useMergeState } from '../../ultis/index';
 
 const SignIn = (props) => {
