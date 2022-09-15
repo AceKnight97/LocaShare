@@ -1,74 +1,29 @@
 import PropTypes from 'prop-types';
-import React, { useContext, useEffect, useState } from 'react';
-import { Button, Text, View, TextInput } from 'react-native';
-import AuthContext from '../../../auth';
-import { useMergeState } from '../../../ultis/index';
+import React from 'react';
+import { Text, View } from 'react-native';
 import LoginFrameStyle from './loginFrameStyle';
 
-const { loginFrame } = LoginFrameStyle;
+const {
+  loginFrame,
+  loginFrameHeader,
+  loginFrameBody,
+  loginFrameFooter,
+  loginFrameHeaderMainTitle,
+  loginFrameFooterCopyright,
+} = LoginFrameStyle;
 
 const LoginFrame = (props) => {
-  const [state, setState] = useMergeState({
-    data: [],
-  });
-
-  useEffect(() => {}, []);
-
-  const goToSignUp = () => {
-    props.navigation.navigate('signUp');
-  };
-
   return (
     <View style={loginFrame}>
       {/* HEADER */}
-      <View
-        style={{
-          height: '20%',
-          paddingTop: 48,
-          // backgroundColor: 'gray',
-        }}>
-        <Text
-          style={{
-            color: '#123456',
-            fontSize: 48,
-            fontWeight: 'bold',
-            textAlign: 'center',
-          }}>
-          LocaShare
-        </Text>
+      <View style={loginFrameHeader}>
+        <Text style={loginFrameHeaderMainTitle}>LocaShare</Text>
       </View>
       {/* BODY */}
-      <View
-        style={{
-          // height: '60%',
-          backgroundColor: 'red',
-          flex: 1,
-        }}>
-        <Text
-          style={{
-            color: '#123456',
-            fontSize: 48,
-            fontWeight: 'bold',
-            textAlign: 'center',
-          }}>
-          LocaShare
-        </Text>
-      </View>
+      <View style={loginFrameBody}>{props.children}</View>
       {/* FOOTER */}
-      <View
-        style={{
-          height: '16%',
-          backgroundColor: 'black',
-        }}>
-        <Text
-          style={{
-            color: '#123456',
-            fontSize: 48,
-            fontWeight: 'bold',
-            textAlign: 'center',
-          }}>
-          LocaShare
-        </Text>
+      <View style={loginFrameFooter}>
+        <Text style={loginFrameFooterCopyright}>@Copyright 2022</Text>
       </View>
     </View>
   );

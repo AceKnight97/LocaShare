@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { SvgXml } from 'react-native-svg';
+import React, { useEffect, useCallback } from 'react';
+import { Text, TextInput, TouchableOpacity, View, Image } from 'react-native';
 import grayEye from '../../../images/basic/grayEye.svg';
 import grayEyeCross from '../../../images/basic/grayEyeCross.svg';
 import globalStyles from '../../../styles';
+import { colors } from '../../../constants/color';
 import { useMergeState } from '../../../ultis/index';
 import InputTitle from '../InputTitle';
 import InputCTStyle from './_inputCT';
-
 
 const { centerC, mr8, ml8 } = globalStyles;
 const {
@@ -19,6 +18,7 @@ const {
   activeBorder,
   errorStyle,
   errorBorder,
+  placeholderStyle,
 } = InputCTStyle;
 
 const INPUT_CT_TYPES = {
@@ -34,10 +34,13 @@ const InputCT = (props) => {
     isFocus: false,
     isSecured: props.isSecured,
   });
+  // const fetchBusinesses = useCallback(() => {
+  //   setState({ isSecured: props.isSecured });
+  // }, []);
 
-  useEffect(() => {
-    setState({ isSecured: props.isSecured });
-  }, [props.isSecured]);
+  // useEffect(() => {
+  //   fetchBusinesses();
+  // }, [fetchBusinesses]);
 
   const {
     title,
@@ -59,6 +62,7 @@ const InputCT = (props) => {
     errMes,
     onRef,
   } = props;
+
   const { isFocus, isSecured } = state;
 
   const onChange = (text) => {
@@ -76,7 +80,6 @@ const InputCT = (props) => {
   const onBlur = () => {
     setState({ isFocus: false });
   };
-
 
   let typeStyle;
   let keyboardType = props.keyboardType;
@@ -99,16 +102,21 @@ const InputCT = (props) => {
     <View style={[inputCTMain, style]}>
       <InputTitle title={title} />
 
-      <View style={[inputWrapper, typeStyle, isFocus ? activeBorder : {},
-        errMes ? errorBorder : {}]}>
-        {icon ? <SvgXml xml={icon} style={mr8} /> : null}
+      <View
+        style={[
+          inputWrapper,
+          typeStyle,
+          isFocus ? activeBorder : {},
+          errMes ? errorBorder : {},
+        ]}>
+        {icon || null}
 
         <TextInput
           ref={onRef}
           editable={!disabled}
           autoFocus={autoFocus}
           returnKeyType={returnKeyType} // done or next
-          secureTextEntry={isSecured}
+          // secureTextEntry={isSecured}
           onChangeText={onChange}
           maxLength={maxLength}
           value={`${value}`}
@@ -120,27 +128,19 @@ const InputCT = (props) => {
           onFocus={onFocus}
           multiline={multiline}
           keyboardType={keyboardType}
-        // fontStyle={fontStyle}
-        // placeholderStyle={[{}, placeholderStyle]}
-        // placeholderTextColor={defaultcolor || colors.gray1}
+          // fontStyle={fontStyle}
+          // placeholderStyle={[{}, placeholderStyle]}
+          placeholderTextColor={colors.gray3}
         />
         {props.isSecured ? (
-          <TouchableOpacity
-            style={ml8}
-            onPress={onChangeSecure}
-          >
-            <SvgXml xml={isSecured ? grayEyeCross : grayEye} />
+
+          <TouchableOpacity style={ml8} onPress={onChangeSecure}>
+            <Image source={isSecured ? grayEyeCross : grayEye} />
           </TouchableOpacity>
         ) : null}
-
       </View>
 
-      {
-        errMes ? (<Text style={errorStyle}>
-          {errMes}
-        </Text>) : null
-      }
-
+      {errMes ? <Text style={errorStyle}>{errMes}</Text> : null}
     </View>
   );
 };
@@ -155,11 +155,11 @@ InputCT.defaultProps = {
   value: '',
   isSecured: false,
   multiline: false,
-  onChange: () => { },
+  onChange: () => {},
   maxLength: 100,
   placeholder: '',
   icon: '',
-  onSubmitEditing: () => { },
+  onSubmitEditing: () => {},
   numberOfLines: undefined,
   type: TEXT,
   inputStyle: {},

@@ -1,7 +1,7 @@
-import {StyleSheet} from 'react-native';
-import {colors} from '../../../constants/color';
+import { StyleSheet } from 'react-native';
+import { colors } from '../../../constants/color';
 
-const {green1, gray1, red0} = colors;
+const { green1, gray1, red0 } = colors;
 
 const InputCTStyle = StyleSheet.create({
   inputCTMain: {
@@ -30,6 +30,7 @@ const InputCTStyle = StyleSheet.create({
     color: 'black',
     textAlignVertical: 'top',
     flex: 1,
+    outline: 'none',
   },
   titleText: {
     color: 'black',
@@ -48,6 +49,9 @@ const InputCTStyle = StyleSheet.create({
   errorStyle: {
     marginTop: 4,
     color: red0,
+  },
+  placeholderStyle: {
+    color: 'red',
   },
 });
 export default InputCTStyle;
