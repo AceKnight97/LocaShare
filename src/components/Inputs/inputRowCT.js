@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   StyleSheet,
@@ -7,10 +7,10 @@ import {
   View,
   TextInput,
 } from 'react-native';
-import {SvgXml} from 'react-native-svg';
+import { SvgXml } from 'react-native-svg';
 
-import GlobalStyles from '../../Styles';
-import {colorsLinear, colors} from '../../Constant/color';
+import globalStyles from '../../Styles';
+import { colorsLinear, colors } from '../../constant/color';
 
 const styles = StyleSheet.create({
   inputCTMain: {
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     display: 'flex',
     flexDirection: 'row',
-    alignItems:'center',
+    alignItems: 'center',
   },
   titleView: {
     // marginBottom: 4,
@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
     color: 'black',
   },
 });
-const {centerC} = GlobalStyles;
-const {inputWrapper, inputCTMain, titleText, titleView, inputBasic} = styles;
+const { centerC } = globalStyles;
+const { inputWrapper, inputCTMain, titleText, titleView, inputBasic } = styles;
 
 class InputRowCT extends Component {
   constructor(props) {
@@ -90,9 +90,9 @@ class InputRowCT extends Component {
         <View
           style={[
             inputWrapper,
-            value ? {borderBottomColor: colors.green1} : {},
+            value ? { borderBottomColor: colors.green1 } : {},
           ]}>
-          {icon ? <SvgXml xml={icon} style={{marginRight: 8}} /> : null}
+          {icon ? <SvgXml xml={icon} style={{ marginRight: 8 }} /> : null}
 
           <TextInput
             // editable={!disabled}
@@ -130,12 +130,12 @@ InputRowCT.defaultProps = {
   value: '',
   isSecured: false,
   multiline: false,
-  onChangeText: () => {},
+  onChangeText: () => { },
   maxLength: 100,
   placeholder: '',
   icon: '',
-  onSubmitEditing: () => {},
-  onPress: () => {},
+  onSubmitEditing: () => { },
+  onPress: () => { },
 };
 InputRowCT.propTypes = {
   title: PropTypes.string,

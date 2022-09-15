@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, Text, View, TextInput} from 'react-native';
 
-import GlobalStyles from '../../Styles';
-import {colors} from '../../Constant/color';
+import globalStyles from '../../Styles';
+import {colors} from '../../constant/color';
 import {screenW} from '../../Constant';
 
 const {gray1} = colors;
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     color: 'black',
   },
 });
-const {centerC} = GlobalStyles;
+const {centerC} = globalStyles;
 const {inputCTMain, titleText, titleView, inputBasic} = styles;
 
 class MultipleLines extends Component {

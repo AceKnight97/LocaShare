@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import {SvgXml} from 'react-native-svg';
 
-import GlobalStyles from '../../Styles';
-import {colors} from '../../Constant/color';
+import globalStyles from '../../Styles';
+import {colors} from '../../constant/color';
 import {screenW} from '../../Constant';
 
 import ButtonCT from '../Buttons/ButtonCT';
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     // backgroundColor: green00,
   },
 });
-const {flexRowAligCent} = GlobalStyles;
+const {flexRowAligCent} = globalStyles;
 const {mainView, inputSty, buttonSty} = styles;
 class SearchBar extends Component {
   constructor(props) {
