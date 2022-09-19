@@ -180,7 +180,7 @@ InputCT.propTypes = {
   onChange: PropTypes.func,
   maxLength: PropTypes.number,
   placeholder: PropTypes.string,
-  icon: PropTypes.string,
+  icon: PropTypes.any,
   onSubmitEditing: PropTypes.func,
   numberOfLines: PropTypes.number,
   type: PropTypes.string,

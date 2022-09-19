@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useRef } from 'react';
 import {
-  Image,
-  TouchableOpacity
+  Image, View
 } from 'react-native';
 import AuthContext from '../../auth';
 import InputCT from '../../components/Inputs/InputCT/index';
@@ -38,7 +37,7 @@ const SignIn = (props) => {
   const goToSignUp = () => {
     props.navigation.navigate('signUp');
   };
-  
+
   const onChange = (key, value) => {
     setState({ [key]: value, emailErr: '', passwordErr: '' });
   };
@@ -47,7 +46,7 @@ const SignIn = (props) => {
 
   return (
     <LoginFrame>
-      <view style={signInStyle.signIn}>
+      <View style={signInStyle.signIn}>
         <InputCT
           style={signInInputEmail}
           name="email"
@@ -78,8 +77,8 @@ const SignIn = (props) => {
           errMes={passwordErr}
         />
 
-        <TouchableOpacity>asdad</TouchableOpacity>
-      </view>
+        {/* <TouchableOpacity>asdad</TouchableOpacity> */}
+      </View>
     </LoginFrame>
   );
 };

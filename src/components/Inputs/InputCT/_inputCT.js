@@ -30,7 +30,7 @@ const InputCTStyle = StyleSheet.create({
     color: 'black',
     textAlignVertical: 'top',
     flex: 1,
-    outline: 'none',
+    // outline: 'none',
   },
   titleText: {
     color: 'black',

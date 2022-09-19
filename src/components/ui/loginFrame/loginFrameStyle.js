@@ -27,7 +27,7 @@ const loginFrameStyle = StyleSheet.create({
   loginFrameFooterCopyright: {
     height: '100%',
     display: 'flex',
-    alignItems: 'end',
+    alignItems: 'flex-end',
     paddingBottom: 12,
     fontSize: 12,
     justifyContent: 'center',
