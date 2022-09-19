@@ -4,6 +4,7 @@ import * as SecureStore from "expo-secure-store";
 import * as React from "react";
 import AuthContext from "./src/auth";
 import BottomAppStack from "./src/navigation/bottomAppStack";
+import GgMap from "./src/pages/ggMap";
 import SignIn from "./src/pages/signIn";
 import SignUp from "./src/pages/signUp";
 
@@ -17,6 +18,7 @@ const LoginStack = (props) => {
         headerShown: false,
       }}
     >
+      <Stack.Screen name="ggMap" component={GgMap} />
       <Stack.Screen name="signIn" component={SignIn} />
       <Stack.Screen name="signUp" component={SignUp} />
     </Stack.Navigator>

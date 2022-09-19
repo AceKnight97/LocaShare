@@ -21,6 +21,12 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.LocaShare.ace",
+      "config": {
+          "googleMaps": {
+              "apiKey": "AIzaSyAY-J35t5ijwI3ldeShek4_9ruoZYk4rXM"
+          }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
