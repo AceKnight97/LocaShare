@@ -10,7 +10,7 @@ import SignUp from "./src/pages/signUp";
 const Stack = createNativeStackNavigator();
 
 const LoginStack = (props) => {
-  console.log({LoginStack: props})
+  // console.log({LoginStack: props})
   return (
     <Stack.Navigator
       screenOptions={{
@@ -21,8 +21,7 @@ const LoginStack = (props) => {
       <Stack.Screen name="signUp" component={SignUp} />
     </Stack.Navigator>
   );
-}
-
+};
 
 function App({ navigation }) {
   const [state, dispatch] = React.useReducer(
