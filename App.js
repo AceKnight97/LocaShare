@@ -18,7 +18,7 @@ const LoginStack = (props) => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="ggMap" component={GgMap} />
+      {/* <Stack.Screen name="ggMap" component={GgMap} /> */}
       <Stack.Screen name="signIn" component={SignIn} />
       <Stack.Screen name="signUp" component={SignUp} />
     </Stack.Navigator>
