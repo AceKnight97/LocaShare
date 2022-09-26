@@ -1,12 +1,11 @@
 export const LOGIN_SCREENS = {
-    SIGN_IN: "SIGN_IN",
-    SIGN_UP: "SIGN_UP",
-    FORGOT: "FORGOT",
+  SIGN_IN: "SIGN_IN",
+  SIGN_UP: "SIGN_UP",
+  FORGOT: "FORGOT",
 }
 import moment from 'moment';
-import _ from 'lodash';
-import {Dimensions} from 'react-native';
-import {LinearLib, sortedRaw} from '../Data';
+import { Dimensions } from 'react-native';
+import { LinearLib, sortedRaw } from '../data';
 
 // https://www.flaticon.com/authors/wanicon/flat/4
 // https://romannurik.github.io/AndroidAssetStudio/icons-launcher.html#foreground.type=image&foreground.space.trim=1&foreground.space.pad=0.2&foreColor=rgba(96%2C%20125%2C%20139%2C%200)&backColor=rgb(105%2C%20195%2C%2074)&crop=0&backgroundShape=circle&effects=none&name=ic_launcher
@@ -35,7 +34,7 @@ export function getLinearColors1() {
   return LinearLib[key];
 }
 
-export const CardListData = _.map(sortedRaw, (x, i) => ({
+export const CardListData = sortedRaw.map((x, i) => ({
   // icon: x.toLocaleLowerCase(), // WILL BE KEPT ?
   // colors: getLinearColors(), // ALWAYS CHANGED
   // msg: '', // ALWAYS CHANGED
@@ -45,7 +44,7 @@ export const CardListData = _.map(sortedRaw, (x, i) => ({
   details: '',
 }));
 
-export const CreateColors = _.map(sortedRaw, (x) => getLinearColors());
+export const CreateColors = sortedRaw.map((x) => getLinearColors());
 
 export const temptest =
   'Bills,Business,Checkups,Course,Decorations,Devices,Drinks,Educations,Entertainments,Friends,Furniture,Games,Hospital,Meals,Medicine,Meeting,Music,Others,Party,Pet,Petrol,Phone,Present,School,Selfcare,Shopping,Stuff,Ticket,Tools,Travel,Unexpected,Vehicle,Wasted';
