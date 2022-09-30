@@ -1,14 +1,14 @@
-import {Datepicker} from '@ui-kitten/components';
+// import {Datepicker} from '@ui-kitten/components';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {View} from 'react-native';
-import {TODAY} from '../../../constants';
-import {useMergeState} from '../../../Helper/customHooks';
+import { View } from 'react-native';
+import { TODAY } from '../../../constants';
+import { useMergeState } from '../../../ultis/index';
 import InputTitle from '../InputTitle';
 import DatepickerCTStyle from './_datepickerCT';
 
-const {main, controlStyle, activeBorder} = DatepickerCTStyle;
+const { main, controlStyle, activeBorder } = DatepickerCTStyle;
 
 const DatepickerCT = (props) => {
   const [state, setState] = useMergeState({
@@ -16,25 +16,25 @@ const DatepickerCT = (props) => {
   });
 
   const onFocus = () => {
-    setState({isFocus: true});
+    setState({ isFocus: true });
   };
 
   const onBlur = () => {
-    setState({isFocus: false});
+    setState({ isFocus: false });
   };
 
   const onSelectDate = (selectedDate) => {
     onChange(name, selectedDate);
   };
-  const {style, value, name, onChange, maxDate, title, minDate} = props;
+  const { style, value, name, onChange, maxDate, title, minDate } = props;
 
-  const {isFocus} = state;
+  const { isFocus } = state;
 
   return (
     <View style={[main, style]}>
       <InputTitle title={title} />
 
-      <Datepicker
+      {/* <Datepicker
         onFocus={onFocus}
         onBlur={onBlur}
         onSelect={onSelectDate}
@@ -42,14 +42,14 @@ const DatepickerCT = (props) => {
         max={maxDate}
         min={minDate}
         controlStyle={[controlStyle, isFocus ? activeBorder : {}]}
-      />
+      /> */}
     </View>
   );
 };
 DatepickerCT.defaultProps = {
   style: {},
   name: '',
-  onChange: () => {},
+  onChange: () => { },
   value: undefined,
   maxDate: TODAY,
   minDate: new Date(1900, 1, 1),
